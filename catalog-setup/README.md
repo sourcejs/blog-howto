@@ -19,7 +19,7 @@ Most typical SourceJS set-up that I've configured for multiple teams looks like 
 	/docs
 	/user (Git repo)	 					- SourceJS instance configuration and content repo
 		/core								- overriding engine core
-		/assets							- overriding engine assets
+		/assets								- overriding engine assets
 		/specs								- default catalog folder for Specs 
 			/bootstrap (Git repo)			- nested bundle with Bootstrap components
 				/bootstrap-component1
@@ -51,7 +51,7 @@ We suggest setting up personal version control repo in `sourcejs/user` folder, s
 
 SourceJS supports multiple catalog system. It means you can create deep nesting level with different bundles inside. Default init script creates `sourcejs/user/specs` folder with first Spec example. You can rename `specs` folder, and use your own catalogs and freely nest other catalogs and sub-repos inside.
 
-As mentioned in the basic setup file scheme above, it's recommended to keep UI component bundles in separate repos. Here are few example bundles used in [sourcejs.com](http://sourcejs.com) setup:
+As mentioned in the basic setup file scheme above, it's recommended to keep UI component bundles in separate repos. Here are few example bundles used in [sourcejs.com](https://github.com/sourcejs/sourcejs.com) setup:
 
 * https://github.com/sourcejs/example-bootstrap-bundle
 * https://github.com/sourcejs/example-specs-showcase
