@@ -2,6 +2,7 @@
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sourcejs/Source)
 
+* [Configuring Page Views](/page-views)
 * [Using SourceJS Context Settings](/context-settings)
 * [Setting Up Specs Catalog Structure](/catalog-setup)
 
