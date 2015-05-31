@@ -1,44 +1,44 @@
 # Setting Up SourceJS Spec Catalogs
 
-Version: 0.5.1
+Version: 0.5.3
 
 [SourceJS](http://sourcejs.com) Living Style Guide Plaftorm is focused on two important workflows - Modular UI Development and Living Style Guide Driven Development. Support of multiple libraries combination for different projects or just a set of standalone Front-end modules is one of the key features engine provides.
 
 To make things clear, let's first define some main keywords.
 
 * Component - standalone instance in your catalogue, could be a UI module (a button, web component, Angular directive), text documentation page, or a small CSS framework
-* Spec - a documentation page, which describes your component; in SourceJS is rendered out of `index.src`, `readme.md`, `index.jade`, DSS doc or other custom formats you define
+* Spec - a documentation page, which describes your component; in SourceJS is rendered out of `index.src.html`, `readme.md`, `index.jade`, DSS doc or other custom formats you define
 * Catalog/Bundle - Is a set of components with Specs, that you put in to SourceJS
 
 Most typical SourceJS set-up that I've configured for multiple teams looks like this:
 
 ```
 /sourcejs (Git repo)						- engine sources (don't need to modify)
-	/core									
+	/core
 	/assets
 	/docs
 	/user (Git repo)	 					- SourceJS instance configuration and content repo
 		/core								- overriding engine core
 		/assets								- overriding engine assets
-		/specs								- default catalog folder for Specs 
+		/specs								- default catalog folder for Specs
 			/bootstrap (Git repo)			- nested bundle with Bootstrap components
 				/bootstrap-component1
-					index.src				- default template for describing component
-					info.json	
+					index.src.html			- default template for describing component
+					info.json
 				/bootstrap-component2
 					...
-				index.src					- default template for describing Nav page
+				index.src.html				- default template for describing Nav page
 				info.json					- essential Spec or Nav page config file
-				
+
 			/project-bundle (Git repo)		- nested project specific bundle
 			/component1	 (Git repo)			- nested standalone component
-				index.src					
-				info.json					
-				
+				index.src.html
+				info.json
+
 			/component2 (Git repo)
 				README.md					- alternative MD template for describing component
-				info.json					
-		
+				info.json
+
 ```
 
 Following official [engine setup instructions](http://sourcejs.com/docs/base/#install) after running `yo sourcejs` setup process, you will get `sourcejs` folder with Git repo attached. It is safe to clean `.git` folder, but we suggest keeping this repo initialized for easy updates via `git pull`.
@@ -58,11 +58,11 @@ As mentioned in the basic setup file scheme above, it's recommended to keep UI c
 
 ## Preparing Nested Bundles
 
-The only main requirement for SourceJS compliant bundles and Specs is `info.json` file, where you keep meta information about documentation or navigation pages. Additionally to it, you will also need to provide `README.md` or `index.src` files to define Spec contents for the engine to render.
+The only main requirement for SourceJS compliant bundles and Specs is `info.json` file, where you keep meta information about documentation or navigation pages. Additionally to it, you will also need to provide `README.md` or `index.src.html` files to define Spec contents for the engine to render.
 
 ### Catalog Level Navigation
 
-If you want to have a bundle level navigation like in [Example Specs](http://sourcejs.com/specs/examples/) section, set-up a simple `index.src` template following [generated nav doc](http://sourcejs.com/docs/data-nav/).
+If you want to have a bundle level navigation like in [Example Specs](http://sourcejs.com/specs/examples/) section, set-up a simple `index.src.html` template following [generated nav doc](http://sourcejs.com/docs/data-nav/).
 
 ```html
 <div class="source_subhead">
@@ -74,7 +74,7 @@ If you want to have a bundle level navigation like in [Example Specs](http://sou
 </div>
 ```
 
-And define the `info.json` meta configuration file next to it.
+And create the `info.json` meta configuration file next to it.
 
 ```json
 {
@@ -100,9 +100,12 @@ To render a Spec page per component, and list it in navigation page, `info.json`
 	/component2
 		component.css
 		info.json
-		index.src
+		index.src.html
 ```
-Check out  `index.src ` [Spec example](https://github.com/sourcejs/example-specs-showcase/tree/master/default).
+
+Check out  `index.src.html ` [Spec example](https://github.com/sourcejs/example-specs-showcase/tree/master/default).
+
+As you might notice, I also mention `index.template` file, which highlights that it's possible to define many different technologies for describing a spec page. Here's an official showcase bundles with examples of different spec technologies - [sourcejs.com/specs/example-specs-showcase](http://sourcejs.com/specs/example-specs-showcase/).
 
 ## Organizing Nested Bundles
 
@@ -133,4 +136,20 @@ If you prefer flat tree, instead of submodules use symlinks:
 ```
 git clone https://github.com/sourcejs/example-bootstrap-bundle.git
 ln -s example-bootstrap-bundle/ sourcejs/user/specs/example-bootstrap-bundle
-``` 
+```
+
+### Good Submodules alternatives
+
+* [ukko](https://github.com/tcorral/ukko) with [ukko-cli](https://github.com/tcorral/ukko-cli)
+
+## Configuring Nested Bundles
+
+With SourceJS [0.5.3 release](https://github.com/sourcejs/Source/releases/tag/0.5.3), engine supports context options. Using `sourcejs-options.js` file in any catalog, all child spec pages will use the custom settings you provide.
+
+Read more about context options in [this how-to article](../catalog-setup).
+
+## Questions
+
+If you have more questions feel free to reach us [by email](mailto:r@rhr.me) or just use our Gitter chat:
+
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sourcejs/Source)
