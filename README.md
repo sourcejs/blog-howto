@@ -2,6 +2,7 @@
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sourcejs/Source)
 
+* [Using SourceJS Context Settings](/context-settings)
 * [Setting Up Specs Catalog Structure](/catalog-setup)
 
-All howto articles will be later moved to official SourceJS blog. Please feel free to improve them with Pull Requests.
+All how-to articles will be later moved to official SourceJS blog. Please feel free to improve them with Pull Requests.
